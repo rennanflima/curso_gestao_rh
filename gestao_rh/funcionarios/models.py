@@ -1,7 +1,7 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 
-User = get_user_model()
+# User = get_user_model()
+User = None
 
 
 class Funcionario(models.Model):
@@ -11,3 +11,7 @@ class Funcionario(models.Model):
 
     def __str__(self):
         return self.usuario.get_full_name()
+
+    def departamentos_list(self):
+        return ', '.join([d.nome for d in self.departamentos.all()])
+    departamentos_list.short_description = "Departamentos"

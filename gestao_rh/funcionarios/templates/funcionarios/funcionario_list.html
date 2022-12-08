@@ -1,0 +1,32 @@
+{% extends 'core/index.html' %}
+
+{% block main %}
+    <div class="row mb-3">
+        <h2>Funcionários</h2>
+        <hr/>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario in funcionarios %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'funcionarios:editar-funcionario' funcionario.pk %}">
+                                Editar
+                            </a>
+                        </td>
+                        <td>{{ funcionario }}</td>
+                        <td>{{ funcionario.departamentos_list }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock main %}
