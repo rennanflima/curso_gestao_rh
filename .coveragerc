@@ -1,0 +1,11 @@
+[run]
+source = gestao_rh
+omit = *migrations*
+       *tests*
+       manage.py
+
+[report]
+fail_under = 35
+
+[xml]
+output = ./reports/code-coverage/coverage.xml
