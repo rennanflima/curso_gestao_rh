@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # apps
     'gestao_rh.empresas',
     'gestao_rh.funcionarios',
+    'gestao_rh.departamentos',
 ]
 
 MIDDLEWARE = [
