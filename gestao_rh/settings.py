@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # apps
+    'gestao_rh.core',
     'gestao_rh.empresas',
     'gestao_rh.funcionarios',
     'gestao_rh.departamentos',
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'gestao_rh.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'gestao_rh/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
