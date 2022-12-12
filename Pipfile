@@ -8,6 +8,7 @@ django = "~=3.2"
 dj-database-url = "*"
 python-decouple = "*"
 django-extensions = "*"
+django-bootstrap5 = "*"
 
 [dev-packages]
 autoflake = "*"

@@ -1,0 +1,41 @@
+{% extends 'core/index.html' %}
+
+{% block main %}
+    <div class="row mb-3">
+        <h2>Banco de Horas</h2>
+        <hr/>
+    </div>
+    <div class="row">
+        <a href="{% url 'horas_extra:registro-hora-extra' %}" class="btn btn-primary">Registrar Hora Extra</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Funcionário</th>
+                <th scope="col">Horas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro_re in object_list %}
+                    <tr>
+                        <td>
+
+                            <a href="{% url 'horas_extra:editar-registro-hora-extra' registro_re.pk %}">
+                                Editar
+                            </a>
+                            <a href="{% url 'horas_extra:deletar-registro-hora-extra' registro_re.pk %}">
+                                Deletar
+                            </a>
+                        </td>
+                        <td>{{ registro_re.funcionario }}</td>
+                        <td>{{ registro_re.horas }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">Nenhum registro de hora extra encontrado</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock main %}

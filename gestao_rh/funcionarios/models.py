@@ -1,7 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 
-# User = get_user_model()
-User = None
+User = get_user_model()
 
 
 class Funcionario(models.Model):
@@ -15,3 +16,6 @@ class Funcionario(models.Model):
     def departamentos_list(self):
         return ', '.join([d.nome for d in self.departamentos.all()])
     departamentos_list.short_description = "Departamentos"
+
+    def get_absolute_url(self):
+        return reverse("funcionarios:lista-funcionarios")

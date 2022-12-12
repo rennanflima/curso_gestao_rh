@@ -2,32 +2,30 @@
 
 {% block main %}
     <div class="row mb-3">
-        <h2>Funcionários</h2>
+        <h2>Departamentos</h2>
         <hr/>
     </div>
     <div class="row">
-        <a href="{% url 'funcionarios:novo-funcionario' %}" class="btn btn-primary">Novo Funcionário</a>
+        <a href="{% url 'departamentos:novo-departamento' %}" class="btn btn-primary">Novo Departamento</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Departamento</th>
                 </tr>
             </thead>
             <tbody>
-                {% for funcionario in funcionarios %}
+                {% for departamento in departamentos %}
                     <tr>
                         <td>
-                            <a href="{% url 'funcionarios:editar-funcionario' funcionario.pk %}">
+                            <a href="{% url 'departamentos:editar-departamento' departamento.pk %}">
                                 Editar
                             </a>
-                            <a href="{% url 'funcionarios:deletar-funcionario' funcionario.pk %}">
+                            <a href="{% url 'departamentos:deletar-departamento' departamento.pk %}">
                                 Deletar
                             </a>
                         </td>
-                        <td>{{ funcionario }}</td>
-                        <td>{{ funcionario.departamentos_list }}</td>
+                        <td>{{ departamento }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

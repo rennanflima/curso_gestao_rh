@@ -1,0 +1,9 @@
+{% extends 'core/index.html' %}
+
+{% block main %}
+<form class="form" method="post">
+    {% csrf_token %}
+    <h3>Você está certo que quer deletar o registro de hora extra "{{ object }}"?</h3>
+    <button class="btn btn-danger" type="submit" value="Submit">Confirmar</button>
+</form>
+{% endblock main %}

@@ -1,0 +1,48 @@
+{% extends 'core/index.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block main %}
+<form class="form" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-success" type="submit" value="Submit">Salvar</button>
+
+    {% if form.instance.pk %}
+        <a class="btn btn-primary" href="{% url 'documentos:novo-documento' object.pk %}">Adicionar Documento</a>
+    {% endif %}
+</form>
+
+{% if form.instance.pk %}
+<div class="row mt-5">
+    <h4>Documentos</h4>
+    <hr/>
+</div>
+<div class="row">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Arquivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for documento in form.instance.documentos.all %}
+                <tr>
+                    <td>
+                        <a href="{% url 'documentos:editar-documento' documento.pk %}">
+                            Editar
+                        </a>
+                    </td>
+                    <td>{{ documento }}</td>
+                    <td><a href="{{ documento.arquivo.url}}" target="_blank">{{ documento.arquivo }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% endblock main %}

@@ -1,0 +1,17 @@
+{% extends 'core/index.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block main %}
+<form class="form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% if form.instance.pk %}
+    <div class="form-row">
+        <label>Arquivo</label>
+        <a href="{{ form.instance.arquivo.url}}" target="_blank">{{form.instance.arquivo}}</a>
+    </div>
+    {% endif %}
+    <button class="btn btn-success" type="submit" value="Submit">Adicionar</button>
+</form>
+{% endblock main %}

@@ -43,15 +43,16 @@ INSTALLED_APPS = [
 
     # libs
     'django_extensions',
+    'django_bootstrap5',
 
     # apps
-    # 'gestao_rh.core',
+    'gestao_rh.core',
     'gestao_rh.accounts',
-    # 'gestao_rh.empresas',
-    # 'gestao_rh.funcionarios',
-    # 'gestao_rh.departamentos',
-    # 'gestao_rh.documentos',
-    # 'gestao_rh.registro_hora_extra',
+    'gestao_rh.empresas',
+    'gestao_rh.funcionarios',
+    'gestao_rh.departamentos',
+    'gestao_rh.documentos',
+    'gestao_rh.registro_hora_extra',
 ]
 
 MIDDLEWARE = [
@@ -113,8 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# LOGIN_REDIRECT_URL = 'core:home'
-# LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -134,6 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = config('MEDIA_URL', default='/media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

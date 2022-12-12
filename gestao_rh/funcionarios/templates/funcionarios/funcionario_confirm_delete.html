@@ -1,0 +1,9 @@
+{% extends 'core/index.html' %}
+
+{% block main %}
+<form class="form" method="post">
+    {% csrf_token %}
+    <h1>Você está certo que quer deletar o funcionário "{{ object }}"?</h1>
+    <button class="btn btn-danger" type="submit" value="Submit">Confirmar</button>
+</form>
+{% endblock main %}

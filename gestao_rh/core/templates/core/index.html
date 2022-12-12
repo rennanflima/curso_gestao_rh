@@ -3,8 +3,15 @@
 {% block menu %}
 <ul class="nav justify-content-end">
     <li class="nav-item">
+        <a class="nav-link" href="{% url 'departamentos:lista-departamentos' %}">Gerenciar Departamentos</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'funcionarios:lista-funcionarios' %}">Gerenciar Funcionários</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'horas_extra:listar-banco-horas' %}">Gerenciar Banco de Horas</a>
+    </li>
+
     {% if user.funcionario.empresa %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'empresas:editar-empresa' user.funcionario.empresa.pk %}">Editar Empresa</a>

@@ -121,7 +121,7 @@ dmypy.json
 staticfiles
 
 # Media files
-media
+media/
 
 # Backup files
 backup
