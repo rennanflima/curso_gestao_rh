@@ -24,11 +24,17 @@ class RegistroHoraExtraCreateView(CreateView):
 
 
 class RegistroHoraExtraUpdateView(UpdateView):
-    fields = ['horas', 'motivo', 'funcionario',]
+    model = RegistroHoraExtra
+    form_class = RegistroHoraExtraForm
 
     def get_queryset(self):
         empresa_logada = self.request.user.funcionario.empresa
         return RegistroHoraExtra.objects.filter(funcionario__empresa=empresa_logada)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'empresa': self.request.user.funcionario.empresa})
+        return kwargs
 
 
 class RegistroHoraExtraDeleteView(DeleteView):
