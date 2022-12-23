@@ -21,6 +21,15 @@
             <a class="nav-link" href="{% url 'empresas:nova-empresa' %}">Criar Empresa</a>
         </li>
     {% endif %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Relatórios</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">PDF - Reportlab</a></li>
+          <li><a class="dropdown-item" href="#">PDF - XHML2PDF</a></li>
+          <li><a class="dropdown-item" href="#">CSV</a></li>
+          <li><a class="dropdown-item" href="#">Excel</a></li>
+        </ul>
+      </li>
     <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}" tabindex="-1" aria-disabled="true">Sair</a>
     </li>
