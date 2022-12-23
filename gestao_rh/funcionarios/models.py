@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
@@ -19,3 +21,8 @@ class Funcionario(models.Model):
 
     def get_absolute_url(self):
         return reverse("funcionarios:lista-funcionarios")
+
+    @property
+    def total_horas_extra(self):
+        total = self.horas_extra.filter(utilizada=False).aggregate(models.Sum('horas'))['horas__sum']
+        return total or Decimal('0.00')

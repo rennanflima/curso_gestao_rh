@@ -1,11 +1,31 @@
 {% extends 'core/index.html' %}
 
-{% load django_bootstrap5 %}
+{% load django_bootstrap5 static %}
 
 {% block main %}
+<div id="mensagem" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+
+</div>
+
+<br>
+
 <form class="form" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button class="btn btn-success" type="submit" value="Submit">Salvar</button>
+
+    {% if form.instance.pk %}
+        {%if form.instance.utilizada %}
+            <button type="button" class="btn btn-info" onclick="marcarHoraExtraNaoUtilizada({{object.id}})" id="btn-ajax-nao-utilizada">Marcar como não utilizada</button>
+        {% else %}
+            <button type="button" class="btn btn-info" onclick="marcarHoraExtraUtilizada({{object.id}})" id="btn-ajax-utilizada">Marcar como utilizada</button>
+        {% endif %}
+    {% endif %}
+    <a class="btn btn-danger" href="{{ cancel_url }}">Cancelar</a>
 </form>
 {% endblock main %}
+
+{% block javascript_extras %}
+    <script src="{% static 'vendor/jquery-3.6.3/jquery.min.js' %}"></script>
+    <script src="{% static 'registro_hora_extra/js/funcoes-ajax.js' %}"></script>
+{% endblock %}

@@ -10,6 +10,8 @@
 
     {% if form.instance.pk %}
         <a class="btn btn-primary" href="{% url 'documentos:novo-documento' object.pk %}">Adicionar Documento</a>
+        <a class="btn btn-primary" href="{% url 'horas_extra:novo-registro-hora-extra' object.pk %}">Registrar Hora Extra</a>
+
     {% endif %}
 </form>
 
@@ -41,6 +43,44 @@
                 </tr>
             {% endfor %}
         </tbody>
+    </table>
+</div>
+
+<div class="row mt-5">
+    <h4>Branco de Horas</h4>
+    <hr/>
+</div>
+<div class="row">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Utilizada?</th>
+            <th scope="col">Horas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hora_extra in form.instance.horas_extra.all %}
+                <tr>
+                    <td>
+                        <a href="{% url 'horas_extra:editar-registro-hora-extra-funcionario' hora_extra.pk object.pk %}">
+                            Editar
+                        </a>
+                    </td>
+                    <td>{{hora_extra}}</td>
+                    <td>{{ hora_extra.utilizada|yesno:"Sim, Não" }}</td>
+                    <td>{{ hora_extra.horas }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total de Horas Extras a serem utilizadas</td>
+                <td>{{ form.instance.total_horas_extra }}</td>
+            </tr>
+        </tfoot>
     </table>
 </div>
 {% endif %}

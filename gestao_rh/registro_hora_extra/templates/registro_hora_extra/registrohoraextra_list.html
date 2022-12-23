@@ -13,6 +13,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Funcionário</th>
                 <th scope="col">Horas</th>
+                <th scope="col">Utilizada?</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                         </td>
                         <td>{{ registro_re.funcionario }}</td>
                         <td>{{ registro_re.horas }}</td>
+                        <td>{{ registro_re.utilizada|yesno:"Sim, Não" }}</td>
                     </tr>
                 {% empty %}
                     <tr>
